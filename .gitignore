@@ -44,5 +44,11 @@ buildNumber.properties
 
 .idea/
 **/target/
-.DS_Store
+**/.DS_Store
+**/.project
+**/.classpath
 
+**/*.iml
+
+**/.settings/
+**/.vscode/
