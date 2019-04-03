@@ -3,16 +3,16 @@ package com.kishinskiy;
 import java.util.*;
 
 class MyArrayList<T> implements List<T> {
-
-    private T[] values;
+    int size;
+    private T[] array;
 
     MyArrayList(){
-        values = (T[]) new Object();
+        array = (T[]) new Object();
     }
 
     @Override
     public int size() {
-        return values.length;
+        return array.length;
     }
 
     @Override
@@ -42,7 +42,15 @@ class MyArrayList<T> implements List<T> {
 
     @Override
     public boolean add(T t) {
-        return false;
+
+        if (size >= array.length){
+            T[] newArray = (T[]) new  Object[array.length * 2];
+            System.arraycopy(array, 0, newArray, 0 ,array.length);
+            array = newArray;
+        }
+        array[size] = t;
+        size++;
+        return true;
     }
 
     @Override
@@ -92,7 +100,15 @@ class MyArrayList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
+        if (index < 0 || index > size){
+            throw  new IndexOutOfBoundsException();
+        }
 
+        add(element);
+        for(int i = size - 1; i > index; i--){
+            array[i] = array[i-1];
+        }
+        array[index] = element;
     }
 
     @Override
