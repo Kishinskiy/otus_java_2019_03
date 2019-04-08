@@ -12,32 +12,33 @@ class MyArrayList<T> implements List<T> {
 
     @Override
     public int size() {
-        return array.length;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        return indexOf(o) != -1;
     }
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        T[] copy = Arrays.copyOf(array, size);
+        return Arrays.asList(copy).iterator();
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(array, size);
     }
 
     @Override
     public <T1> T1[] toArray(T1[] a) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -55,47 +56,70 @@ class MyArrayList<T> implements List<T> {
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        int index = indexOf(o);
+        if (index == -1) {
+            return false;
+        }
+        remove(index);
+        return true;
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object element: c) {
+            if (!contains(element)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        boolean flag = true;
+        for(T element: c) {
+            flag &= add(element);
+        }
+        return flag;
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        boolean flag = true;
+        for (Object obj: c) {
+            flag &= remove(obj);
+        }
+        return flag;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void clear() {
-
+        size = 0;
     }
 
     @Override
     public T get(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        return array[index];
     }
 
     @Override
     public T set(int index, T element) {
-        return null;
+        T old = get(index);
+        array[index] = element;
+        return old;
     }
 
     @Override
@@ -113,31 +137,60 @@ class MyArrayList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        return null;
+        T element = get(index);
+        for (int i=index; i<size-1; i++) {
+            array[i] = array[i+1];
+        }
+        size--;
+        return element;
     }
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0; i<size; i++) {
+            if (equals(o, array[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private boolean equals(Object o, T t) {
+        if (o == null) {
+            return t == null;
+        } else {
+            return o.equals(t);
+        }
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        for (int i = size-1; i>=0; i--) {
+            if (equals(o, array[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
     public ListIterator<T> listIterator() {
-        return null;
+        T[] copy = Arrays.copyOf(array, size);
+        return Arrays.asList(copy).listIterator();
     }
 
     @Override
     public ListIterator<T> listIterator(int index) {
-        return null;
+        T[] copy = Arrays.copyOf(array, size);
+        return Arrays.asList(copy).listIterator(index);
     }
 
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
-        return null;
+        if (fromIndex < 0 || toIndex >= size || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException();
+        }
+        T[] copy = Arrays.copyOfRange(array, fromIndex, toIndex);
+        return Arrays.asList(copy);
     }
 }
