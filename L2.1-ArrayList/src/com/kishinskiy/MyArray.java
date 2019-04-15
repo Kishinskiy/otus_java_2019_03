@@ -1,110 +1,86 @@
 package com.kishinskiy;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
-class MyArrayList<T> implements List<T> {
+/**
+ * @author downey
+ * @param <T>
+ *
+ */
+public class MyArray<T> implements List<T> {
     int size;
     private T[] array;
 
-    MyArrayList(){
-        array = (T[]) new Object();
+    @SuppressWarnings("unchecked")
+    public MyArray() {
+        array = (T[]) new Object[20];
+        size = 0;
     }
 
-    @Override
-    public int size() {
-        return size;
-    }
+
 
     @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        return indexOf(o) != -1;
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        T[] copy = Arrays.copyOf(array, size);
-        return Arrays.asList(copy).iterator();
-    }
-
-    @Override
-    public Object[] toArray() {
-        return Arrays.copyOf(array, size);
-    }
-
-    @Override
-    public <T1> T1[] toArray(T1[] a) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public boolean add(T t) {
-
-        if (size >= array.length){
-            T[] newArray = (T[]) new  Object[array.length * 2];
-            System.arraycopy(array, 0, newArray, 0 ,array.length);
-            array = newArray;
+    public boolean add(T element) {
+        if (size >= array.length) {
+            @SuppressWarnings("unchecked")
+            T[] bigger = (T[]) new Object[array.length * 2];
+            System.arraycopy(array, 0, bigger, 0, array.length);
+            array = bigger;
         }
-        array[size] = t;
+        array[size] = element;
         size++;
         return true;
     }
 
     @Override
-    public boolean remove(Object o) {
-        int index = indexOf(o);
-        if (index == -1) {
-            return false;
+    public void add(int index, T element) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
         }
-        remove(index);
-        return true;
+        add(element);
+        for (int i=size-1; i>index; i--) {
+            array[i] = array[i-1];
+        }
+        array[index] = element;
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {
-        for (Object element: c) {
-            if (!contains(element)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends T> c) {
+    public boolean addAll(Collection<? extends T> collection) {
         boolean flag = true;
-        for(T element: c) {
+        for (T element: collection) {
             flag &= add(element);
         }
         return flag;
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends T> c) {
-        throw new UnsupportedOperationException();
-    }
+    public boolean addAll(int index, Collection<? extends T> collection) {
 
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        boolean flag = true;
-        for (Object obj: c) {
-            flag &= remove(obj);
-        }
-        return flag;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
         throw new UnsupportedOperationException();
     }
 
     @Override
     public void clear() {
         size = 0;
+    }
+
+    @Override
+    public boolean contains(Object obj) {
+        return indexOf(obj) != -1;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> collection) {
+        for (Object element: collection) {
+            if (!contains(element)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -116,57 +92,38 @@ class MyArrayList<T> implements List<T> {
     }
 
     @Override
-    public T set(int index, T element) {
-        T old = get(index);
-        array[index] = element;
-        return old;
-    }
-
-    @Override
-    public void add(int index, T element) {
-        if (index < 0 || index > size){
-            throw  new IndexOutOfBoundsException();
-        }
-
-        add(element);
-        for(int i = size - 1; i > index; i--){
-            array[i] = array[i-1];
-        }
-        array[index] = element;
-    }
-
-    @Override
-    public T remove(int index) {
-        T element = get(index);
-        for (int i=index; i<size-1; i++) {
-            array[i] = array[i+1];
-        }
-        size--;
-        return element;
-    }
-
-    @Override
-    public int indexOf(Object o) {
+    public int indexOf(Object target) {
         for (int i = 0; i<size; i++) {
-            if (equals(o, array[i])) {
+            if (equals(target, array[i])) {
                 return i;
             }
         }
         return -1;
     }
 
-    private boolean equals(Object o, T t) {
-        if (o == null) {
-            return t == null;
+    private boolean equals(Object target, Object element) {
+        if (target == null) {
+            return element == null;
         } else {
-            return o.equals(t);
+            return target.equals(element);
         }
     }
 
     @Override
-    public int lastIndexOf(Object o) {
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        T[] copy = Arrays.copyOf(array, size);
+        return Arrays.asList(copy).iterator();
+    }
+
+    @Override
+    public int lastIndexOf(Object target) {
         for (int i = size-1; i>=0; i--) {
-            if (equals(o, array[i])) {
+            if (equals(target, array[i])) {
                 return i;
             }
         }
@@ -186,11 +143,67 @@ class MyArrayList<T> implements List<T> {
     }
 
     @Override
+    public boolean remove(Object obj) {
+        int index = indexOf(obj);
+        if (index == -1) {
+            return false;
+        }
+        remove(index);
+        return true;
+    }
+
+    @Override
+    public T remove(int index) {
+        T element = get(index);
+        for (int i=index; i<size-1; i++) {
+            array[i] = array[i+1];
+        }
+        size--;
+        return element;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> collection) {
+        boolean flag = true;
+        for (Object obj: collection) {
+            flag &= remove(obj);
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> collection) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public T set(int index, T element) {
+        T old = get(index);
+        array[index] = element;
+        return old;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
     public List<T> subList(int fromIndex, int toIndex) {
         if (fromIndex < 0 || toIndex >= size || fromIndex > toIndex) {
             throw new IndexOutOfBoundsException();
         }
         T[] copy = Arrays.copyOfRange(array, fromIndex, toIndex);
         return Arrays.asList(copy);
+    }
+
+    @Override
+    public Object[] toArray() {
+        return Arrays.copyOf(array, size);
+    }
+
+    @Override
+    public <U> U[] toArray(U[] array) {
+        throw new UnsupportedOperationException();
     }
 }
