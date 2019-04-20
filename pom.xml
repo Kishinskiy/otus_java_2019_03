@@ -9,7 +9,7 @@
     <!--parent>*</parent-->
 
     <groupId>com.kishinskiy</groupId>
-    <artifactId>L01-maven</artifactId>
+    <artifactId>java-2019-03</artifactId>
     <version>2019-03-01-SNAPSHOT</version>
 
     <description>Code examples</description>
@@ -23,6 +23,7 @@
 
     <modules>
         <module>L01.1-maven</module>
+        <module>L2.1-ArrayList</module>
     </modules>
 
     <properties>
