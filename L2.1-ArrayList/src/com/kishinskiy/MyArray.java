@@ -21,7 +21,11 @@ public class MyArray<T> implements List<T> {
         size = 0;
     }
 
+    public MyArray(int i) {
+    }
 
+    public MyArray(String s) {
+    }
 
     @Override
     public boolean add(T element) {
