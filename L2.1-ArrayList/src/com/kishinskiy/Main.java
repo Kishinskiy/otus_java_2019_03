@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Main {
 
-    private static void fillarray(List arrlist){
+    private static void fillarray(List arrlist) {
         for (char c = 'a'; c <= 'z'; ++c) {
 
             arrlist.add(c);
@@ -15,8 +15,6 @@ public class Main {
     public static void main(String[] args) {
 
         //////  вызываем addAll /////
-
-
         List arrlist = new MyArray<>();
 
         fillarray(arrlist);
@@ -25,8 +23,6 @@ public class Main {
         System.out.println(arrlist.size());
 
         ////////////////////////////////////////
-
-
         ///////   copy ////////
 
         // create two lists
@@ -46,26 +42,26 @@ public class Main {
         } catch (NullPointerException e) {
             System.out.println("Ошибка при копировании эллементов массива");
         }
-            //////////////////////////////////////
+        //////////////////////////////////////
 
-            //// Sort /////
-            MyArray<Integer> list = new MyArray<Integer>();
+        //// Sort /////
+        MyArray<Integer> list = new MyArray<Integer>();
 
 
-            // заполняем список из 20 элементов случайными числами
-            for (int i=0; i < 20; i++) {
-                int random = (int) (Math.random() * 50 + 1);
+        // заполняем список из 20 элементов случайными числами
+        for (int i = 0; i < 20; i++) {
+            int random = (int) (Math.random() * 50 + 1);
 
-                list.add(random);
-            }
-
-            // вызываем метод Sort для этого списка.
-            Collections.sort(list);  // с этим тоже все ясно
-
-            for (int i : list) {
-                System.out.println(i + " ");
-            }
-            //////////////////////////////////
+            list.add(random);
         }
 
+        // вызываем метод Sort для этого списка.
+        Collections.sort(list);  // с этим тоже все ясно
+
+        for (int i : list) {
+            System.out.println(i + " ");
+        }
+        //////////////////////////////////
     }
+
+}
