@@ -1,23 +1,24 @@
 package com.kishinskiy;
 
-import java.util.Iterator;
+import java.util.*;
 
-public interface MyIterator<E>  implements Iterator<E> {
+public interface MyIterator<E> extends Iterator<E> {
 
-    private int index = 0;
-    E[] values;
+    boolean hasNext();
 
-    MyIterator(E[] values){
-        this.values = values;
-    }
+    E next();
 
-    @Override
-    public boolean hasNext(){
-        return index < values.length;
-    }
+    boolean hasPrevious();
 
-    @Override
-    public E next(){
-        return values[index++];
-    }
+    E previous();
+
+    int nextIndex();
+
+    int previousIndex();
+
+    void remove();
+
+    void set(E e);
+
+    void add(E e);
 }

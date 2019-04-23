@@ -8,9 +8,9 @@
         <version>2019-03-01-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>L01.1-maven</artifactId>
-    <name>L01.1-maven</name>
+    <groupId>com.kishinskiy</groupId>
+    <artifactId>L01_1-maven</artifactId>
+    <name>L01_1-maven</name>
 
     <dependencies>
         <dependency>
@@ -53,4 +53,3 @@
 
 
 </project>
-

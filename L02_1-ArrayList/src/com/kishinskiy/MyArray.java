@@ -1,10 +1,6 @@
 package com.kishinskiy;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * @author downey
@@ -132,16 +128,24 @@ public class MyArray<T> implements List<T> {
             }
         }
         return -1;
+
+        ArrayList
     }
 
     @Override
     public MyIterator<T> listIterator() {
         T[] copy = Arrays.copyOf(array, size);
-        return Arrays.asList(copy).listIterator();
+        return (MyIterator<T>) Arrays.asList(copy).myListIterator();
     }
 
     @Override
-    public MyIterator<T> listIterator(int index) {
+    public MyIterator<T> myListIterator(){
+        T[] copy = Arrays.copyOf(array, size);
+        return (MyIterator<T>) Arrays.asList(copy).myListIterator();
+    }
+
+    @Override
+    public ListIterator<T> listIterator(int index) {
         T[] copy = Arrays.copyOf(array, size);
         return Arrays.asList(copy).listIterator(index);
     }
