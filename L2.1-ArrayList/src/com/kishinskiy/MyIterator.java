@@ -2,7 +2,7 @@ package com.kishinskiy;
 
 import java.util.Iterator;
 
-public class MyIterator<E>  implements Iterator<E> {
+public interface MyIterator<E>  implements Iterator<E> {
 
     private int index = 0;
     E[] values;

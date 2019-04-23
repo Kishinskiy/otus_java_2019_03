@@ -119,7 +119,7 @@ public class MyArray<T> implements List<T> {
     }
 
     @Override
-    public MyIterator<T> iterator() {
+    public Iterator<T> iterator() {
         T[] copy = Arrays.copyOf(array, size);
         return Arrays.asList(copy).iterator();
     }
@@ -135,13 +135,13 @@ public class MyArray<T> implements List<T> {
     }
 
     @Override
-    public ListIterator<T> listIterator() {
+    public MyIterator<T> listIterator() {
         T[] copy = Arrays.copyOf(array, size);
         return Arrays.asList(copy).listIterator();
     }
 
     @Override
-    public ListIterator<T> listIterator(int index) {
+    public MyIterator<T> listIterator(int index) {
         T[] copy = Arrays.copyOf(array, size);
         return Arrays.asList(copy).listIterator(index);
     }
