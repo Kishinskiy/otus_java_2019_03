@@ -12,6 +12,7 @@ public class Main {
         }
     }
 
+
     public static void main(String[] args) {
 
         //////  вызываем addAll /////
@@ -46,7 +47,6 @@ public class Main {
 
         //// Sort /////
         MyArray<Integer> list = new MyArray<Integer>();
-
 
         // заполняем список из 20 элементов случайными числами
         for (int i = 0; i < 20; i++) {
