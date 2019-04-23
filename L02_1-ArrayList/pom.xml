@@ -2,10 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>java-2019-03</artifactId>
+        <groupId>com.kishinskiy</groupId>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kishinskiy</groupId>
-    <artifactId>L2.1-ArrayList</artifactId>
+    <artifactId>L02_1-ArrayList</artifactId>
     <version>2019-04-23-SNAPSHOT</version>
 
     <properties>
