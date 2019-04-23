@@ -11,16 +11,7 @@
 
     <artifactId>L2.1-ArrayList</artifactId>
     <name>L2.1-ArrayList</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-    </dependencies>
-
     <packaging>jar</packaging>
-
     <build>
         <finalName>${project.name}</finalName>
         <plugins>
