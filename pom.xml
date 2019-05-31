@@ -24,6 +24,7 @@
     <modules>
         <module>L01_1-maven</module>
         <module>L02_1-ArrayList</module>
+        <module>LO6-Anatation</module>
     </modules>
 
     <properties>
