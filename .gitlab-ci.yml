@@ -17,7 +17,8 @@ Build Java Project:
 Test Home Work 2 - DIY ArrayList:
   stage: test
   script:
-    - java -jar L02_1-ArrayList/target/L02_1-ArrayList-jar-with-dependencies.jar
+    - ls ./L02_1-ArrayList/target/
+    - java -jar ./L02_1-ArrayList/target/L02_1-ArrayList-jar-with-dependencies.jar
   dependencies:
     - Build Java Project
   when: manual
@@ -27,7 +28,7 @@ Test Home Work 2 - DIY ArrayList:
 Test Home Work 3 - Anatation:
   stage: test
   script:
-    - java -jar LO6-Anatation/target/LO6-Anatation-jar-with-dependencies.jar
+    - java -jar ./LO6-Anatation/target/LO6-Anatation-jar-with-dependencies.jar
   dependencies:
     - Build Java Project
   when: manual
