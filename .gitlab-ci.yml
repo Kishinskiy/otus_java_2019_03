@@ -6,8 +6,10 @@ image: java
 
 Build Java Project:
   stage: build
+  before_script:
+    - apt install mvn
   script:
-    - mvn package
+    - mvn clean package
   tags:
     - default
 
