@@ -23,8 +23,8 @@
 
     <modules>
         <module>L01_1-maven</module>
-        <module>L02_1-ArrayList</module>
-        <module>LO6-Anatation</module>
+        <module>L02-ArrayList</module>
+        <module>L06-Anatation</module>
     </modules>
 
     <properties>
@@ -53,16 +53,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.kishinskiy.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
                     <version>3.1.1</version>
                 </plugin>
             </plugins>
