@@ -2,7 +2,7 @@ stages:
   - build
   - test
 
-image: bitnami/java
+image: bitnami/java:11
 
 Build Java Project:
   stage: build
