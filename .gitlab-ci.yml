@@ -14,11 +14,22 @@ Build Java Project:
   tags:
     - default
 
+Test Home Work 2 - DIY ArrayList:
+  stage: test
+  script:
+    - java -jar LO2_1-ArrayList/target/L02_1-ArrayList-jar-with-dependencies.jar
+  dependencies:
+    - Build Java Project
+  when: manual
+  tags:
+    - default
+
 Test Home Work 3 - Anatation:
   stage: test
   script:
-    - java jar LO6-Anatation/target/LO6-Anatation-2019-04-27-SNAPSHOT.jar
+    - java -jar LO6-Anatation/target/LO6-Anatation-2019-04-27-SNAPSHOT.jar
   dependencies:
     - Build Java Project
+  when: manual
   tags:
     - default
