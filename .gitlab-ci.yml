@@ -11,6 +11,11 @@ Build Java Project:
     - apt install maven -y
   script:
     - mvn clean package
+  artifacts:
+    paths:
+      - ./L02_1-ArrayList/target/L02_1-ArrayList-jar-with-dependencies.jar
+      - ./LO6-Anatation/target/LO6-Anatation-jar-with-dependencies.jar
+
   tags:
     - default
 
