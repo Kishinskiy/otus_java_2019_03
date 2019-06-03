@@ -1,0 +1,4 @@
+language: java
+
+scrypt:
+  - java -jar /Users/kishinskiy/Desktop/otus_java_2019_03/LO6-Anatation/target/LO6-Anatation-2019-04-27-SNAPSHOT.jar
