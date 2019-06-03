@@ -1,0 +1,17 @@
+stages:
+  - build
+  - test
+
+image: java
+
+Build Java Project:
+  stage: build
+  script:
+    - mvn package
+
+Test Home Work 3 - Anatation:
+  stage: test
+  script:
+    - java jar LO6-Anatation/target/LO6-Anatation-2019-04-27-SNAPSHOT.jar
+  dependencies:
+    - Build
