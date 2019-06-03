@@ -9,7 +9,7 @@
     <!--parent>*</parent-->
 
     <groupId>com.kishinskiy</groupId>
-    <artifactId>L01-maven</artifactId>
+    <artifactId>java-2019-03</artifactId>
     <version>2019-03-01-SNAPSHOT</version>
 
     <description>Code examples</description>
@@ -22,7 +22,9 @@
     </developers>
 
     <modules>
-        <module>L01.1-maven</module>
+        <module>L01_1-maven</module>
+        <module>L02_1-ArrayList</module>
+        <module>LO6-Anatation</module>
     </modules>
 
     <properties>
@@ -51,6 +53,16 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.kishinskiy.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
                     <version>3.1.1</version>
                 </plugin>
             </plugins>

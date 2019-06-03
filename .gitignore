@@ -41,8 +41,12 @@ buildNumber.properties
 
 # End of https://www.gitignore.io/api/java,maven
 
-
 .idea/
 **/target/
-.DS_Store
+**/.DS_Store
+**/.project
+**/.classpath
+**/*.iml
+**/.settings/
+**/.vscode/
 
