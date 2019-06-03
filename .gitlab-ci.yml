@@ -14,4 +14,4 @@ Test Home Work 3 - Anatation:
   script:
     - java jar LO6-Anatation/target/LO6-Anatation-2019-04-27-SNAPSHOT.jar
   dependencies:
-    - Build
+    - Build Java Project
