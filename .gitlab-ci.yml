@@ -17,7 +17,8 @@ Build Java Project:
 Test Home Work 2 - DIY ArrayList:
   stage: test
   script:
-    - find *.jar
+    - ls
+    - ls LO2_1-ArrayList/target
     - java -jar LO2_1-ArrayList/target/L02_1-ArrayList-jar-with-dependencies.jar
   dependencies:
     - Build Java Project
