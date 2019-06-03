@@ -8,6 +8,8 @@ Build Java Project:
   stage: build
   script:
     - mvn package
+  tags:
+    - default
 
 Test Home Work 3 - Anatation:
   stage: test
@@ -15,3 +17,5 @@ Test Home Work 3 - Anatation:
     - java jar LO6-Anatation/target/LO6-Anatation-2019-04-27-SNAPSHOT.jar
   dependencies:
     - Build Java Project
+  tags:
+    - default
