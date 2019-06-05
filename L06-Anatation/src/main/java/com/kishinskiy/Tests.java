@@ -1,4 +1,4 @@
-package com.kishinskiy
+package com.kishinskiy;
 
 public class Tests {
     @Before
@@ -17,5 +17,3 @@ public class Tests {
         System.out.printf("After Anatation...");
     }
 }
-
-
